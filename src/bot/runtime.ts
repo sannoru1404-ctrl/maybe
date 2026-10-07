@@ -1,10 +1,10 @@
 import { Bot, InlineKeyboard } from 'grammy';
 import { z } from 'zod';
 
-const config = z.object({ BOT_TOKEN: z.string().min(20), TMA_URL: z.string().url() });
+const config = z.object({ BOT_TOKEN: z.string().min(20), TMA_URL: z.string().url().default('https://maybe-oige28efe-httpsgithubcomsannoru1404.vercel.app') });
 
 export function createSubShareBot(env: NodeJS.ProcessEnv = process.env) {
-  const c = config.parse(env);
+  const c = config.parse({ ...env, TMA_URL: env.TMA_URL?.includes('example.com') ? undefined : env.TMA_URL });
   const bot = new Bot(c.BOT_TOKEN);
   bot.command('start', ctx => ctx.reply('Добро пожаловать в SubShare — безопасный шеринг семейных подписок.', {
     reply_markup: new InlineKeyboard().webApp('Открыть SubShare', c.TMA_URL),
