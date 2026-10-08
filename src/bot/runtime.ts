@@ -1,7 +1,7 @@
 import { Bot, InlineKeyboard } from 'grammy';
 import { z } from 'zod';
 
-const config = z.object({ BOT_TOKEN: z.string().min(20), TMA_URL: z.string().url().default('https://maybe-oige28efe-httpsgithubcomsannoru1404.vercel.app') });
+const config = z.object({ BOT_TOKEN: z.string().min(20), TMA_URL: z.string().url().default('https://maybe-flax-mu.vercel.app') });
 
 export function createSubShareBot(env: NodeJS.ProcessEnv = process.env) {
   const c = config.parse({ ...env, TMA_URL: env.TMA_URL?.includes('example.com') ? undefined : env.TMA_URL });
