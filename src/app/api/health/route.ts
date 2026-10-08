@@ -1,1 +1,1 @@
-export function GET(){return Response.json({ok:true,service:'subshare',timestamp:new Date().toISOString()});}
+export function GET(){return Response.json({ok:true,service:'subshare',timestamp:new Date().toISOString(),configuration:{botToken:Boolean(process.env.BOT_TOKEN),tmaUrl:Boolean(process.env.TMA_URL),webhookSecret:Boolean(process.env.TELEGRAM_WEBHOOK_SECRET),supabaseUrl:Boolean(process.env.SUPABASE_URL),supabaseKey:Boolean(process.env.SUPABASE_SERVICE_ROLE_KEY)}});}
